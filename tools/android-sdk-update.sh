@@ -55,12 +55,8 @@ cp -v /opt/tools/*.sh ${ANDROID_HOME}/bin
 #    android-accept-licenses.sh "sdkmanager --package_file=/opt/tools/package-list.txt --verbose"
 #fi
 
-# Read https://stackoverflow.com/a/60454207
-# update tools to latest version
-${ANDROID_HOME}/bin/sdkmanager --sdk_root=${ANDROID_HOME} "tools"
-
 echo "Updating SDK"
 update_sdk
 
 echo "Accepting Licenses"
-android-accept-licenses.sh "sdkmanager --licenses --verbose"
+android-accept-licenses.sh "sdkmanager --sdk_tools=${ANDROID_HOME} --licenses --verbose"

@@ -28,8 +28,7 @@ WORKDIR /opt/android-sdk-linux
 
 RUN /opt/tools/entrypoint.sh built-in
 
-RUN /opt/android-sdk-linux/tools/bin/sdkmanager "build-tools;29.0.3"
-RUN /opt/android-sdk-linux/tools/bin/sdkmanager "platforms;android-29"
-RUN /opt/android-sdk-linux/tools/bin/sdkmanager "platform-tools"
+RUN /opt/android-sdk-linux/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} \
+  "tools" "build-tools;29.0.3" "platforms;android-29" "platform-tools"
 
 CMD /opt/tools/entrypoint.sh built-in
