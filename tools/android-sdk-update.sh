@@ -32,7 +32,7 @@ then
   echo "SDK Tools already bootstrapped. Skipping initial setup"
 else
   echo "Bootstrapping SDK-Tools"
-  wget -q https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip -O sdk-tools-linux.zip
+  wget -q https://dl.google.com/android/repository/commandlinetools-linux-6200805_latest.zip -O sdk-tools-linux.zip
   unzip sdk-tools-linux.zip
 fi
 
@@ -47,13 +47,17 @@ echo "Copying Tools"
 mkdir -p ${ANDROID_HOME}/bin
 cp -v /opt/tools/*.sh ${ANDROID_HOME}/bin
 
-echo "Installing packages"
-if [ $built_in_sdk -eq 1 ]
-then
-    android-accept-licenses.sh "sdkmanager --package_file=/opt/tools/package-list-minimal.txt --verbose"
-else
-    android-accept-licenses.sh "sdkmanager --package_file=/opt/tools/package-list.txt --verbose"
-fi
+#echo "Installing packages"
+#if [ $built_in_sdk -eq 1 ]
+#then
+#    android-accept-licenses.sh "sdkmanager --package_file=/opt/tools/package-list-minimal.txt --verbose"
+#else
+#    android-accept-licenses.sh "sdkmanager --package_file=/opt/tools/package-list.txt --verbose"
+#fi
+
+# Read https://stackoverflow.com/a/60454207
+# update tools to latest version
+${ANDROID_HOME}/bin/sdkmanager --sdk_root=${ANDROID_HOME} "tools"
 
 echo "Updating SDK"
 update_sdk
