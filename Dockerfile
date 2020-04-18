@@ -12,20 +12,11 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install required tools
 # Dependencies to execute Android builds
 
-RUN dpkg --add-architecture i386 && apt-get update -yqq && apt-get install -y \
-  curl \
-  expect \
-  git \
-  libc6:i386 \
-  libgcc1:i386 \
-  libncurses5:i386 \
-  libstdc++6:i386 \
-  zlib1g:i386 \
-  openjdk-8-jdk \
-  wget \
-  unzip \
-  vim \
+RUN apt-get update -yqq && apt-get install -y \
+  curl git openjdk-8-jdk wget unzip vim \
   && apt-get clean
+
+ENV EDITOR vim
 
 RUN groupadd android && useradd -d /opt/android-sdk-linux -g android android
 
@@ -38,13 +29,7 @@ WORKDIR /opt/android-sdk-linux
 RUN /opt/tools/entrypoint.sh built-in
 
 RUN /opt/android-sdk-linux/tools/bin/sdkmanager "build-tools;29.0.3"
-
 RUN /opt/android-sdk-linux/tools/bin/sdkmanager "platforms;android-29"
-
 RUN /opt/android-sdk-linux/tools/bin/sdkmanager "platform-tools"
-
-#RUN /opt/android-sdk-linux/tools/bin/sdkmanager "emulator"
-
-#RUN /opt/android-sdk-linux/tools/bin/sdkmanager "system-images;android-29;google_apis;x86_64"
 
 CMD /opt/tools/entrypoint.sh built-in
