@@ -59,4 +59,4 @@ echo "Updating SDK"
 update_sdk
 
 echo "Accepting Licenses"
-android-accept-licenses.sh "sdkmanager --sdk_tools=${ANDROID_HOME} --licenses --verbose"
+android-accept-licenses.sh "sdkmanager --sdk_root=${ANDROID_HOME} --licenses --verbose"

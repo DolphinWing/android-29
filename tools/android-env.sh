@@ -4,6 +4,7 @@ export ANDROID_HOME=/opt/android-sdk-linux
 export ANDROID_SDK_ROOT=${ANDROID_HOME}
 export ANDROID_SDK_HOME=${ANDROID_HOME}
 export ANDROID_SDK=${ANDROID_HOME}
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
 
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/bin:
 
@@ -28,7 +29,7 @@ function help() {
 }
 
 function update_sdk() {
-    android-accept-licenses.sh "sdkmanager --update"
+    android-accept-licenses.sh "sdkmanager --sdk_root=${ANDROID_HOME} --update"
 }
 
 function andep() {
@@ -36,7 +37,7 @@ function andep() {
         help
         return 1
     fi
-    android-accept-licenses.sh  "sdkmanager ${1}"
+    android-accept-licenses.sh  "sdkmanager --sdk_root=${ANDROID_HOME} ${1}"
 }
 
 export -f help

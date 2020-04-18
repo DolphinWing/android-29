@@ -17,6 +17,7 @@ RUN apt-get update -yqq && apt-get install -y \
   && apt-get clean
 
 ENV EDITOR vim
+ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
 
 RUN groupadd android && useradd -d /opt/android-sdk-linux -g android android
 
