@@ -13,7 +13,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Dependencies to execute Android builds
 
 RUN apt-get update -yqq && apt-get install -y \
-  curl git openjdk-8-jdk wget unzip vim \
+  curl expect git openjdk-8-jdk wget unzip vim \
   && apt-get clean
 
 ENV EDITOR vim
