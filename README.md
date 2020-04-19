@@ -12,14 +12,16 @@ Docker for Android SDK 29 with preinstalled build tools
   build-tools;29.0.3                | 29.0.3  | Android SDK Build-Tools 29.0.3    | build-tools/29.0.3/
   platform-tools                    | 29.0.6  | Android SDK Platform-Tools        | platform-tools/
   platforms;android-29              | 4       | Android SDK Platform 29           | platforms/android-29/
-  tools                             | 26.0.1  | Android SDK Tools 26.0.1          | tools/
+  tools                             | 26.1.1  | Android SDK Tools 26.1.1          | tools/
 ```
 
 **Usage**
 
 - Interactive way
   ```bash
-  $ docker run -it --rm --privileged androidsdk/android-29:latest bash
+  $ docker run -it --rm --privileged dolphinwing/android-build:latest bash
+  # enable color prompt
+  $ source ~/.docker-prompt
   # check installed packages
   $ sdkmanager --list
   # You can also run other Android platform tools, which are all added to the PATH environment variable
@@ -31,6 +33,6 @@ Docker for Android SDK 29 with preinstalled build tools
 - Non-interactive way
   ```bash
   # check installed packages
-  $ docker run -it --rm androidsdk/android-29:latest sdkmanager --list
+  $ docker run -it --rm dolphinwing/android-build:latest sdkmanager --list
   # You can also run other Android platform tools, which are all added to the PATH environment variable
   ```
