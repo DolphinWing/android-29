@@ -7,7 +7,7 @@ ENV GSTREAMER_SDK_ROOT /opt/gstreamer-1.0-android
 #  curl expect git openjdk-8-jdk wget unzip vim \
 #  && apt-get clean && apt-get autoremove
 
-RUN groupadd android && useradd -d /opt/gstreamer-sdk-android -g android android
+RUN mkdir -p ${GSTREAMER_SDK_ROOT} && chown android:android ${GSTREAMER_SDK_ROOT}
 
 COPY tools/gstreamer-sdk.sh /opt/tools/
 
