@@ -13,6 +13,5 @@ chown android:android /opt/android-sdk-linux
 if checkbin; then
     exec su-exec android:android /opt/tools/android-sdk-update.sh "$@"
 else
-    /opt/tools/env_setup.sh
     su_mt_user /opt/tools/android-sdk-update.sh ${1}
 fi

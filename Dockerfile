@@ -33,5 +33,8 @@ RUN /opt/android-sdk-linux/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} \
   && /opt/android-sdk-linux/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} \
   --uninstall "emulator"
 
+WORKDIR /root
+RUN /opt/tools/env_setup.sh
+
 #can be replaced by -it when init
 CMD /opt/tools/entrypoint.sh built-in
