@@ -13,6 +13,8 @@ Docker for Android SDK 29 with preinstalled build tools
   platform-tools                    | 29.0.6  | Android SDK Platform-Tools        | platform-tools/
   platforms;android-29              | 4       | Android SDK Platform 29           | platforms/android-29/
   tools                             | 26.1.1  | Android SDK Tools 26.1.1          | tools/
+  ndk;17.2.4988734                  | r17c    | NDK 17.2.4988734                  | ndk/17.2.4988734/
+  cmake;3.6.4111459                 | 3.6     | CMake 3.6.4111459                 | cmake/3.6.4111459/
 ```
 
 **Usage**
