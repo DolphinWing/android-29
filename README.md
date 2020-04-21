@@ -16,6 +16,15 @@ Docker for Android SDK 29 with preinstalled build tools
   ndk;17.2.4988734                  | r17c    | NDK 17.2.4988734                  | ndk/17.2.4988734/
   cmake;3.6.4111459                 | 3.6     | CMake 3.6.4111459                 | cmake/3.6.4111459/
 ```
+**GStreamer 1.16.2**
+```bash
+# ls -l /opt/gstreamer-1.16.2
+total 16
+drwxr-xr-x 7 root root 4096  一   7 13:36 arm64
+drwxr-xr-x 7 root root 4096  一   7 13:36 armv7
+drwxr-xr-x 7 root root 4096  一   7 13:36 x86
+drwxr-xr-x 7 root root 4096  一   7 13:37 x86_64
+```
 
 **Usage**
 
