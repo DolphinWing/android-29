@@ -1,13 +1,28 @@
 #!/bin/bash
 
-CPATH=/opt/tools #`pwd`
-export ANDROID_HOME=/opt/android-sdk-linux
-export ANDROID_SDK_ROOT=${ANDROID_HOME}
-#export ANDROID_SDK_HOME=${ANDROID_HOME}
-#export ANDROID_SDK=${ANDROID_HOME}
-export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
+mkdir -p /opt/android-sdk-linux/bin/
+cp /opt/tools/android-env.sh /opt/android-sdk-linux/bin/
+source /opt/android-sdk-linux/bin/android-env.sh
 
-export PATH=${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/bin:
+built_in_sdk=1
+
+
+echo $#
+
+echo $1
+
+if [ $# -ge 0 ] && [ "$1" == "lazy-dl" ]
+then
+    echo "Using Lazy Download Flavour"
+    built_in_sdk=0
+elif [ $# -ge 0 ] && [ "$1" == "built-in" ]
+then
+    echo "Using Built-In SDK Flavour"
+    built_in_sdk=1
+else
+    echo "Please use either built-in or lazy-dl as parameter"
+    exit 1
+fi
 
 cd ${ANDROID_HOME}
 echo "Set ANDROID_HOME to ${ANDROID_HOME}"
@@ -17,7 +32,7 @@ then
   echo "SDK Tools already bootstrapped. Skipping initial setup"
 else
   echo "Bootstrapping SDK-Tools"
-  wget -q https://dl.google.com/android/repository/commandlinetools-linux-6200805_latest.zip -O sdk-tools-linux.zip
+  wget -q https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip -O sdk-tools-linux.zip
   unzip sdk-tools-linux.zip
 fi
 
@@ -25,10 +40,23 @@ echo "Make sure repositories.cfg exists"
 mkdir -p ~/.android/
 touch ~/.android/repositories.cfg
 
+echo "Copying Licences"
+cp -rv /opt/licenses ${ANDROID_HOME}/licenses
+
+echo "Copying Tools"
+mkdir -p ${ANDROID_HOME}/bin
+cp -v /opt/tools/*.sh ${ANDROID_HOME}/bin
+
+echo "Installing packages"
+if [ $built_in_sdk -eq 1 ]
+then
+    android-accept-licenses.sh "sdkmanager --package_file=/opt/tools/package-list-minimal.txt --verbose"
+else
+    android-accept-licenses.sh "sdkmanager --package_file=/opt/tools/package-list.txt --verbose"
+fi
+
 echo "Updating SDK"
-$CPATH/android-accept-licenses.sh "sdkmanager --sdk_root=${ANDROID_HOME} --update --verbose"
+update_sdk
 
 echo "Accepting Licenses"
-$CPATH/android-accept-licenses.sh "sdkmanager --sdk_root=${ANDROID_HOME} --licenses --verbose"
-
-rm -f sdk-tools-linux.zip
+android-accept-licenses.sh "sdkmanager --licenses --verbose"

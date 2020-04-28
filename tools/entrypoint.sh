@@ -15,3 +15,10 @@ if checkbin; then
 else
     su_mt_user /opt/tools/android-sdk-update.sh ${1}
 fi
+
+
+
+
+
+
+
