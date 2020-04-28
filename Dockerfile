@@ -37,14 +37,30 @@ WORKDIR /opt/android-sdk-linux
 
 RUN /opt/tools/entrypoint.sh built-in
 
-RUN /opt/android-sdk-linux/tools/bin/sdkmanager "build-tools;29.0.3"
+RUN ${ANDROID_HOME}/tools/bin/sdkmanager "build-tools;29.0.3"
 
-RUN /opt/android-sdk-linux/tools/bin/sdkmanager "platforms;android-29"
+RUN ${ANDROID_HOME}/tools/bin/sdkmanager "platforms;android-29"
 
-RUN /opt/android-sdk-linux/tools/bin/sdkmanager "platform-tools"
+RUN ${ANDROID_HOME}/tools/bin/sdkmanager "platform-tools"
 
-RUN /opt/android-sdk-linux/tools/bin/sdkmanager "emulator"
+RUN ${ANDROID_HOME}/tools/bin/sdkmanager "emulator"
 
-RUN /opt/android-sdk-linux/tools/bin/sdkmanager "system-images;android-29;google_apis;x86_64"
+RUN ${ANDROID_HOME}/tools/bin/sdkmanager "system-images;android-29;google_apis;x86_64"
 
-CMD /opt/tools/entrypoint.sh built-in
+ENV EDITOR vim
+ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
+ENV ANDROID_NDK_ROOT ${ANDROID_HOME}/ndk/21.0.6113669
+
+RUN ${ANDROID_HOME}/tools/bin/sdkmanager "cmake;3.6.4111459" "ndk;21.0.6113669"
+
+ENV GSTREAMER_ROOT_ANDROID /opt/gstreamer-1.0-android
+
+RUN mkdir -p ${GSTREAMER_ROOT_ANDROID} && chown android:android ${GSTREAMER_ROOT_ANDROID}
+
+RUN /opt/tools/gstreamer-sdk.sh
+
+WORKDIR /root
+
+RUN /opt/tools/env-setup.sh
+
+CMD /bin/bash
