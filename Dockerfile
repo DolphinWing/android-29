@@ -63,4 +63,6 @@ WORKDIR /root
 
 RUN /opt/tools/env-setup.sh
 
+RUN apt-get install -y pkg-config && apt-get clean
+
 CMD /bin/bash
