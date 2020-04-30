@@ -25,6 +25,7 @@ RUN dpkg --add-architecture i386 && apt-get update -yqq && apt-get install -y \
   wget \
   unzip \
   vim \
+  pkg-config \
   && apt-get clean
 
 RUN groupadd android && useradd -d /opt/android-sdk-linux -g android android
@@ -37,15 +38,9 @@ WORKDIR /opt/android-sdk-linux
 
 RUN /opt/tools/entrypoint.sh built-in
 
-RUN ${ANDROID_HOME}/tools/bin/sdkmanager "build-tools;29.0.3"
+RUN ${ANDROID_HOME}/tools/bin/sdkmanager "build-tools;29.0.3" "platforms;android-29" "platform-tools" "emulator"
 
-RUN ${ANDROID_HOME}/tools/bin/sdkmanager "platforms;android-29"
-
-RUN ${ANDROID_HOME}/tools/bin/sdkmanager "platform-tools"
-
-RUN ${ANDROID_HOME}/tools/bin/sdkmanager "emulator"
-
-RUN ${ANDROID_HOME}/tools/bin/sdkmanager "system-images;android-29;google_apis;x86_64"
+RUN ${ANDROID_HOME}/tools/bin/sdkmanager "system-images;android-R;google_apis;x86_64"
 
 ENV EDITOR vim
 ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
@@ -62,7 +57,5 @@ RUN /opt/tools/gstreamer-sdk.sh
 WORKDIR /root
 
 RUN /opt/tools/env-setup.sh
-
-RUN apt-get install -y pkg-config && apt-get clean
 
 CMD /bin/bash
