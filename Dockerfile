@@ -40,8 +40,6 @@ RUN /opt/tools/entrypoint.sh built-in
 
 RUN ${ANDROID_HOME}/tools/bin/sdkmanager "build-tools;29.0.3" "platforms;android-29" "platform-tools" "emulator"
 
-RUN ${ANDROID_HOME}/tools/bin/sdkmanager "system-images;android-28;google_apis;x86_64"
-
 ENV EDITOR vim
 ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
 ENV ANDROID_NDK_ROOT ${ANDROID_HOME}/ndk/21.0.6113669
@@ -57,5 +55,7 @@ RUN /opt/tools/gstreamer-sdk.sh
 WORKDIR /root
 
 RUN /opt/tools/env-setup.sh
+
+RUN ${ANDROID_HOME}/tools/bin/sdkmanager "system-images;android-25;google_apis;arm64-v8a"
 
 CMD /bin/bash
