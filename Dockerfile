@@ -40,7 +40,7 @@ RUN /opt/tools/entrypoint.sh built-in
 
 RUN ${ANDROID_HOME}/tools/bin/sdkmanager "build-tools;29.0.3" "platforms;android-29" "platform-tools" "emulator"
 
-RUN ${ANDROID_HOME}/tools/bin/sdkmanager "system-images;android-R;google_apis;x86_64"
+RUN ${ANDROID_HOME}/tools/bin/sdkmanager "system-images;android-28;google_apis;x86_64"
 
 ENV EDITOR vim
 ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
