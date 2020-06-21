@@ -8,13 +8,14 @@ COPY tools/gstreamer-sdk.sh /opt/tools/
 
 RUN /opt/tools/gstreamer-sdk.sh
 
+# Install required tools
+RUN apt install -y python3 sudo
+#RUN pip install pybadges
+
 RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 USER docker
 WORKDIR /home/docker
 
-# Install required tools
-RUN apt install -y python3 sudo
 RUN echo /opt/tools/.docker.prompt >> .bashrc && echo '123456' | sudo -S cp /opt/tools/.*rc .
-#RUN pip install pybadges
 
 CMD /bin/bash
