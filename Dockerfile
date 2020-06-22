@@ -15,6 +15,6 @@ RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 USER docker
 WORKDIR /home/docker
 
-RUN echo /opt/tools/.docker-prompt >> .bashrc && echo 'docker' | sudo -S cp /opt/tools/.*rc .
+RUN cat /opt/tools/.docker-prompt >> .bashrc && echo 'docker' | sudo -S cp /opt/tools/.*rc .
 
 CMD /bin/bash
