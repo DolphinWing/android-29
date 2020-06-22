@@ -16,8 +16,6 @@ RUN apt update && apt install -y python3 sudo python3-pip && pip3 install pybadg
 #WORKDIR /home/docker
 RUN echo "android:android" | chpasswd && adduser android sudo
 USER android
-WORKDIR /home/android
-
-RUN cat /opt/tools/.docker-prompt >> .bashrc && echo 'android' | sudo -S cp /opt/tools/.*rc .
+WORKDIR /tmp
 
 CMD /bin/bash
