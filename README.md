@@ -1,6 +1,6 @@
-# Docker for Android SDK 29
+# Docker for Android SDK 30
 
-Docker for Android SDK 29 with preinstalled build tools
+Docker for Android SDK 30 with preinstalled build tools
 
 > Edit from [mindrunner/docker-android-sdk](https://github.com/mindrunner/docker-android-sdk)
 
@@ -9,9 +9,9 @@ Docker for Android SDK 29 with preinstalled build tools
 # sdkmanager --list
   Path                              | Version | Description                       | Location
   -------                           | ------- | -------                           | -------
-  build-tools;29.0.3                | 29.0.3  | Android SDK Build-Tools 29.0.3    | build-tools/29.0.3/
-  platform-tools                    | 29.0.6  | Android SDK Platform-Tools        | platform-tools/
-  platforms;android-29              | 4       | Android SDK Platform 29           | platforms/android-29/
+  build-tools;30.0.1                | 30.0.1  | Android SDK Build-Tools 30.0.1    | build-tools/30.0.1/
+  platform-tools                    | 30.0.4  | Android SDK Platform-Tools        | platform-tools/
+  platforms;android-30              | 2       | Android SDK Platform 30           | platforms/android-30/
   tools                             | 26.1.1  | Android SDK Tools 26.1.1          | tools/
 ```
 
