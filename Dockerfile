@@ -1,4 +1,4 @@
-FROM dolphinwing/android-build:ndk-r17c
+FROM dolphinwing/android-build:ndk-r21d
 
 ENV GSTREAMER_ROOT_ANDROID /opt/gstreamer-1.0-android
 

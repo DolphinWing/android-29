@@ -13,7 +13,7 @@ Docker for Android SDK 29 with preinstalled build tools
   platform-tools                    | 29.0.6  | Android SDK Platform-Tools        | platform-tools/
   platforms;android-29              | 4       | Android SDK Platform 29           | platforms/android-29/
   tools                             | 26.1.1  | Android SDK Tools 26.1.1          | tools/
-  ndk;17.2.4988734                  | r17c    | NDK 17.2.4988734                  | ndk/17.2.4988734/
+  ndk;21.3.6528147                  | r21d    | NDK 21.3.6528147                  | ndk/21.3.6528147/
   cmake;3.6.4111459                 | 3.6     | CMake 3.6.4111459                 | cmake/3.6.4111459/
 ```
 **GStreamer 1.16.2**
@@ -30,9 +30,9 @@ drwxr-xr-x 7 root root 4096  一   7 13:37 x86_64
 
 - Interactive way
   ```bash
-  $ docker run -it --rm --privileged dolphinwing/android-build:latest bash
+  $ docker run -it --rm --privileged dolphinwing/android-build:gstreamer-latest bash
   # enable color prompt
-  $ source ~/.docker-prompt
+  $ source /opt/tools/.docker-prompt
   # check installed packages
   $ sdkmanager --list
   # You can also run other Android platform tools, which are all added to the PATH environment variable
@@ -44,6 +44,6 @@ drwxr-xr-x 7 root root 4096  一   7 13:37 x86_64
 - Non-interactive way
   ```bash
   # check installed packages
-  $ docker run -it --rm dolphinwing/android-build:latest sdkmanager --list
+  $ docker run -it --rm dolphinwing/android-build:gstreamer-latest sdkmanager --list
   # You can also run other Android platform tools, which are all added to the PATH environment variable
   ```
