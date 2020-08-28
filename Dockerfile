@@ -29,7 +29,7 @@ WORKDIR /opt/android-sdk-linux
 RUN /opt/tools/entrypoint.sh built-in
 
 RUN /opt/android-sdk-linux/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} \
-  "build-tools;30.0.1" "platforms;android-30" "platform-tools" "tools" \
+  "build-tools;30.0.2" "platforms;android-30" "platform-tools" "tools" \
   && /opt/android-sdk-linux/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} \
   --uninstall "emulator"
 
