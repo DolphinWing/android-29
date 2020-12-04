@@ -12,12 +12,12 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install required tools
 # Dependencies to execute Android builds
 RUN apt-get update -yqq && apt-get install -y \
-  curl expect git openjdk-8-jdk wget unzip vim \
+  curl expect git openjdk-11-jdk wget unzip vim \
   && apt-get clean && apt-get autoremove
 # git commit-msg editor
 ENV EDITOR vim
 # sdkmanager and android tools use java8
-ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
+ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
 
 RUN groupadd android && useradd -d /opt/android-sdk-linux -g android android
 
