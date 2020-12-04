@@ -2,8 +2,7 @@ FROM ubuntu:18.04
 
 ENV ANDROID_HOME /opt/android-sdk-linux
 #ENV ANDROID_SDK_HOME /opt/android-sdk-linux
-ENV ANDROID_SDK_ROOT /opt/android-sdk-linux
-#ENV ANDROID_SDK /opt/android-sdk-linux
+ENV ANDROID_SDK_ROOT $ANDROID_HOME
 
 ENV PATH "${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/bin"
 
@@ -16,7 +15,7 @@ RUN apt-get update -yqq && apt-get install -y \
   && apt-get clean && apt-get autoremove
 # git commit-msg editor
 ENV EDITOR vim
-# sdkmanager and android tools use java8
+# sdkmanager and android tools use java11
 ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
 
 RUN groupadd android && useradd -d /opt/android-sdk-linux -g android android

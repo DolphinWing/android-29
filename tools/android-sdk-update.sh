@@ -1,11 +1,11 @@
 #!/bin/bash
 
 CPATH=/opt/tools #`pwd`
-export ANDROID_HOME=/opt/android-sdk-linux
-export ANDROID_SDK_ROOT=${ANDROID_HOME}
+#export ANDROID_HOME=/opt/android-sdk-linux
+#export ANDROID_SDK_ROOT=${ANDROID_HOME}
 #export ANDROID_SDK_HOME=${ANDROID_HOME}
 #export ANDROID_SDK=${ANDROID_HOME}
-export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
+#export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/bin:
 
