@@ -4,15 +4,17 @@ Docker for Android SDK 30 with preinstalled build tools
 
 > Edit from [mindrunner/docker-android-sdk](https://github.com/mindrunner/docker-android-sdk)
 
+Currently it comes with Open Java 11 JDK installed.
+
 **Installed Packages**
 ```bash
 # sdkmanager --list
-  Path                              | Version | Description                       | Location
-  -------                           | ------- | -------                           | -------
-  build-tools;30.0.2                | 30.0.2  | Android SDK Build-Tools 30.0.2    | build-tools/30.0.2/
-  platform-tools                    | 30.0.4  | Android SDK Platform-Tools        | platform-tools/
-  platforms;android-30              | 2       | Android SDK Platform 30           | platforms/android-30/
-  tools                             | 26.1.1  | Android SDK Tools 26.1.1          | tools/
+  Path                              | Version   | Description                       | Location
+  -------                           | -------   | -------                           | -------
+  build-tools;30.0.2                | 30.0.2    | Android SDK Build-Tools 30.0.2    | build-tools/30.0.2/
+  platform-tools                    | 30.0.5    | Android SDK Platform-Tools        | platform-tools/
+  platforms;android-30              | 2         | Android SDK Platform 30           | platforms/android-30/
+  cmdline-tools                     | 4.0.0 rc2 | Android SDK Command-line Tools    | cmdline-tools/
 ```
 
 **Usage**
