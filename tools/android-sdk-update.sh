@@ -6,8 +6,7 @@ CPATH=/opt/tools #`pwd`
 #export ANDROID_SDK_HOME=${ANDROID_HOME}
 #export ANDROID_SDK=${ANDROID_HOME}
 #export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-
-export PATH=${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/bin:
+#export PATH=${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/cmdline-tools/bin:${ANDROID_HOME}/bin:
 
 cd ${ANDROID_HOME}
 echo "Set ANDROID_HOME to ${ANDROID_HOME}"
@@ -17,7 +16,7 @@ then
   echo "SDK Tools already bootstrapped. Skipping initial setup"
 else
   echo "Bootstrapping SDK-Tools"
-  wget -q https://dl.google.com/android/repository/commandlinetools-linux-6200805_latest.zip -O sdk-tools-linux.zip
+  wget -q https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip -O sdk-tools-linux.zip
   unzip sdk-tools-linux.zip
 fi
 
@@ -26,9 +25,9 @@ mkdir -p ~/.android/
 touch ~/.android/repositories.cfg
 
 echo "Updating SDK"
-$CPATH/android-accept-licenses.sh "sdkmanager --sdk_root=${ANDROID_HOME} --update --verbose"
+$CPATH/android-accept-licenses.sh "${ANDROID_HOME}/cmdline-tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --update --verbose"
 
 echo "Accepting Licenses"
-$CPATH/android-accept-licenses.sh "sdkmanager --sdk_root=${ANDROID_HOME} --licenses --verbose"
+$CPATH/android-accept-licenses.sh "${ANDROID_HOME}/cmdline-tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --licenses --verbose"
 
 rm -f sdk-tools-linux.zip

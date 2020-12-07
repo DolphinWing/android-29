@@ -4,7 +4,7 @@ ENV ANDROID_HOME /opt/android-sdk-linux
 #ENV ANDROID_SDK_HOME /opt/android-sdk-linux
 ENV ANDROID_SDK_ROOT $ANDROID_HOME
 
-ENV PATH "${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/bin"
+ENV PATH "${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/cmdline-tools/bin:${ANDROID_HOME}/bin"
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -27,9 +27,9 @@ WORKDIR /opt/android-sdk-linux
 
 RUN /opt/tools/entrypoint.sh built-in
 
-RUN /opt/android-sdk-linux/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} \
-  "build-tools;30.0.2" "platforms;android-30" "platform-tools" "tools" \
-  && /opt/android-sdk-linux/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} \
+RUN /opt/android-sdk-linux/cmdline-tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} \
+  "build-tools;30.0.2" "platforms;android-30" \
+  && /opt/android-sdk-linux/cmdline-tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} \
   --uninstall "emulator"
 
 WORKDIR /root
