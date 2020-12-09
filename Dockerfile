@@ -1,4 +1,4 @@
-FROM dolphinwing/android-build:android-30
+FROM dolphinwing/android-build:latest
 
 RUN apt-get update -yqq && apt-get install -y pkg-config \
   && apt-get clean && apt-get autoremove -yqq
